@@ -8,6 +8,7 @@ This project is an Inventory Management System built using C# and Windows Forms.
 
 - **Product Management**: Add, edit, and delete products.
 - **Dashboard**: View total products, products out of stock, and products with low stock.
+- **Category Management**: Manage product categories.
 - **Export Data**: Export product data to Excel or PDF.
 - **Charts**: Visualize product data with charts.
 
@@ -39,8 +40,39 @@ This project is an Inventory Management System built using C# and Windows Forms.
 
 ### Database Setup
 
-1. Create a SQL Server database.
-2. Execute the SQL scripts in the `Scripts` folder to create the necessary tables.
+1. Create a SQL Server database:
+    ```sql
+    -- Create the database
+    CREATE DATABASE inventory;
+
+    -- Use the newly created database
+    USE inventory;
+
+    -- Create the products table
+    CREATE TABLE products (
+        id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+        prod_id VARCHAR(50) NULL,
+        prod_name VARCHAR(100) NOT NULL,
+        category VARCHAR(100) NOT NULL,
+        price FLOAT NOT NULL,
+        stock INT NOT NULL,
+        image_path VARCHAR(255) NULL,
+        status VARCHAR(50) NOT NULL,
+        date_insert DATE NOT NULL
+    );
+
+    -- Create the users table
+    CREATE TABLE users (
+        id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+        username VARCHAR(50) NULL,
+        password VARCHAR(255) NOT NULL,
+        role VARCHAR(50) NOT NULL,
+        status VARCHAR(50) NOT NULL,
+        date DATE NOT NULL
+    );
+    ```
+
+2. Execute the SQL scripts in your SQL Server Management Studio (SSMS) to create the necessary tables.
 
 ### Using the Application
 
@@ -79,7 +111,6 @@ This project is currently under active development. Here are some of the upcomin
 - **Improved UI/UX**: Enhance the user interface for better user experience.
 - **Notifications**: Implement notifications for low stock and other alerts.
 - **Unit Tests**: Add unit tests to improve code quality and reliability.
-- **Category Management**: Manage product categories.
 
 ## Contributing
 
